@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения, Ангелина!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #cdeafd;
+    background-image:
+      radial-gradient(circle at 15% 20%, #fff5c2 0%, transparent 35%),
+      radial-gradient(circle at 85% 75%, #ffd6e0 0%, transparent 40%),
+      linear-gradient(180deg, #cdeafd 0%, #e8f7ff 60%, #fff5e1 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', 'Trebuchet MS', 'Segoe UI', sans-serif;
+    padding: 16px;
+    padding-top: 90px;
+    padding-bottom: 30px;
+    position: relative;
+  }
+
+  .clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50px;
+    opacity: 0.85;
+    filter: blur(0.5px);
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .cloud::before {
+    width: 60%;
+    height: 130%;
+    top: -55%;
+    left: 12%;
+  }
+
+  .cloud::after {
+    width: 45%;
+    height: 100%;
+    top: -35%;
+    right: 12%;
+  }
+
+  .cloud1 { width: 130px; height: 42px; top: 8%; left: -180px; animation: cloudMove 32s linear infinite; }
+  .cloud2 { width: 90px; height: 30px; top: 22%; left: -180px; animation: cloudMove 42s linear infinite 6s; }
+  .cloud3 { width: 150px; height: 48px; top: 42%; left: -200px; animation: cloudMove 36s linear infinite 12s; }
+  .cloud4 { width: 100px; height: 34px; top: 62%; left: -180px; animation: cloudMove 46s linear infinite 3s; }
+  .cloud5 { width: 120px; height: 40px; top: 78%; left: -200px; animation: cloudMove 38s linear infinite 18s; }
+
+  @keyframes cloudMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 220px)); }
+  }
+
+  .sun {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffe066 40%, #ffd43b 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255, 214, 59, 0.6), 0 0 80px rgba(255, 214, 59, 0.3);
+    z-index: 1;
+    animation: sunPulse 4s ease-in-out infinite;
+  }
+
+  .sun::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, rgba(255, 230, 102, 0.4) 30%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  @keyframes sunPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .pigeon-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .pigeon {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    animation: pigeonFly 3.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    transform-origin: center;
+  }
+
+  @keyframes pigeonFly {
+    0% {
+      top: -30%;
+      left: -25%;
+      transform: scale(0.4) rotate(-8deg);
+      opacity: 0;
+    }
+    8% {
+      opacity: 1;
+    }
+    30% {
+      top: 8%;
+      left: 18%;
+      transform: scale(0.65) rotate(5deg);
+    }
+    55% {
+      top: 16%;
+      left: 42%;
+      transform: scale(0.85) rotate(-2deg);
+    }
+    78% {
+      top: 22%;
+      left: 50%;
+      transform: scale(1) rotate(2deg);
+    }
+    92% {
+      top: 24%;
+      left: 50%;
+      transform: scale(1.05) rotate(-1deg);
+    }
+    100% {
+      top: 24%;
+      left: 50%;
+      transform: translateX(-50%) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  .pigeon-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+  }
+
+  .wing-back {
+    transform-origin: 70px 90px;
+    animation: wingBack 0.35s ease-in-out infinite;
+  }
+
+  .wing-front {
+    transform-origin: 75px 95px;
+    animation: wingFront 0.35s ease-in-out infinite;
+  }
+
+  @keyframes wingBack {
+    0%, 100% { transform: rotate(-25deg) scaleY(1); }
+    50% { transform: rotate(35deg) scaleY(0.7); }
+  }
+
+  @keyframes wingFront {
+    0%, 100% { transform: rotate(20deg) scaleY(0.75); }
+    50% { transform: rotate(-30deg) scaleY(1); }
+  }
+
+  .pigeon-tail {
+    transform-origin: 40px 110px;
+    animation: tailWag 0.7s ease-in-out infinite;
+  }
+
+  @keyframes tailWag {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+  }
+
+  .pigeon-head {
+    transform-origin: 110px 70px;
+    animation: headBob 0.5s ease-in-out infinite;
+  }
+
+  @keyframes headBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  .envelope {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 75px;
+    background: #fff5e1;
+    border: 4px solid #ffb3c6;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    opacity: 0;
+    animation: envelopeReveal 0.5s ease 0.5s forwards;
+  }
+
+  @keyframes envelopeReveal {
+    to { opacity: 1; }
+  }
+
+  .envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-left: 51px solid transparent;
+    border-right: 51px solid transparent;
+    border-top: 32px solid #ffd670;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .envelope-heart {
+    position: relative;
+    z-index: 2;
+    font-size: 26px;
+    margin-top: 6px;
+    animation: heartBeat 0.9s ease-in-out infinite;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .card {
+    position: relative;
+    z-index: 10;
+    background: #ffffff;
+    border: 5px solid #ffb3c6;
+    border-radius: 32px;
+    padding: 75px 26px 35px;
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 0 #ffb3c6, 0 16px 35px rgba(255, 150, 180, 0.25);
+    opacity: 0;
+    transform: scale(0.3);
+    animation: cardReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) 3.5s forwards;
+    margin-top: 130px;
+  }
+
+  @keyframes cardReveal {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) translateY(-40px);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.06) translateY(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .balloons {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 18px;
+    align-items: flex-end;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 4.1s forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .balloon {
+    width: 46px;
+    height: 58px;
+    position: relative;
+    animation: floaty 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,0.1));
+  }
+
+  .balloon-body {
+    width: 100%;
+    height: 100%;
+    border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .balloon-body::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 9px;
+    height: 13px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+  }
+
+  .balloon-body::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    width: 6px;
+    height: 9px;
+    background: rgba(255,255,255,0.45);
+    border-radius: 50%;
+  }
+
+  .balloon-tie {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid;
+  }
+
+  .balloon-string {
+    position: absolute;
+    bottom: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 34px;
+    background: #c9c9c9;
+    border-radius: 2px;
+  }
+
+  .balloon:nth-child(1) { animation-delay: 0s; }
+  .balloon:nth-child(2) { animation-delay: 0.4s; }
+  .balloon:nth-child(3) { animation-delay: 0.8s; }
+  .balloon:nth-child(4) { animation-delay: 1.2s; }
+  .balloon:nth-child(5) { animation-delay: 0.6s; }
+
+  .balloon:nth-child(1) .balloon-body { background: #ff8fa3; }
+  .balloon:nth-child(1) .balloon-tie { border-top-color: #ff8fa3; }
+  .balloon:nth-child(2) .balloon-body { background: #ffd670; }
+  .balloon:nth-child(2) .balloon-tie { border-top-color: #ffd670; }
+  .balloon:nth-child(3) .balloon-body { background: #8ecae6; }
+  .balloon:nth-child(3) .balloon-tie { border-top-color: #8ecae6; }
+  .balloon:nth-child(4) .balloon-body { background: #b8e0a0; }
+  .balloon:nth-child(4) .balloon-tie { border-top-color: #b8e0a0; }
+  .balloon:nth-child(5) .balloon-body { background: #d9b3ff; }
+  .balloon:nth-child(5) .balloon-tie { border-top-color: #d9b3ff; }
+
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+
+  .cake-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .candles {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: -3px;
+  }
+
+  .candle {
+    width: 7px;
+    height: 26px;
+    background: repeating-linear-gradient(45deg, #ff8fa3, #ff8fa3 4px, #fff 4px, #fff 8px);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    border: 1.5px solid #ff8fa3;
+  }
+
+  .flame {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 12px;
+    background: #ffb703;
+    border: 1.5px solid #fb8500;
+    border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+    animation: wiggle 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes wiggle {
+    from { transform: translateX(-50%) rotate(-6deg); }
+    to { transform: translateX(-50%) rotate(6deg); }
+  }
+
+  .cake {
+    font-size: 62px;
+    line-height: 1;
+    animation: cakeHop 1.8s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes cakeHop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+
+  h1 {
+    font-size: 1.75em;
+    color: #e5537b;
+    margin: 12px 0 8px;
+    line-height: 1.25;
+  }
+
+  .name {
+    display: inline-block;
+    color: #7b4bce;
+    animation: nameJump 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 4.3s both;
+  }
+
+  @keyframes nameJump {
+    0% { transform: scale(0) rotate(-12deg); }
+    70% { transform: scale(1.15) rotate(4deg); }
+    100% { transform: scale(1) rotate(0); }
+  }
+
+  .subtitle {
+    font-size: 1em;
+    color: #8a6d3b;
+    margin-bottom: 12px;
+  }
+
+  .age {
+    display: inline-block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: #ff8fa3;
+    background: #fff5e1;
+    border: 4px dashed #ffd670;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    line-height: 82px;
+    margin: 8px 0 16px;
+    animation: ageBounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes ageBounce {
+    0%, 100% { transform: scale(1) rotate(-3deg); }
+    50% { transform: scale(1.06) rotate(3deg); }
+  }
+
+  .message {
+    font-size: 0.98em;
+    color: #5c4a3d;
+    line-height: 1.8;
+    background: #fff9ec;
+    border: 3px dashed #ffd670;
+    border-radius: 22px;
+    padding: 18px 18px;
+    margin-bottom: 22px;
+  }
+
+  .btn {
+    background: #ff8fa3;
+    color: #fff;
+    border: none;
+    border-bottom: 5px solid #e5537b;
+    padding: 14px 34px;
+    font-size: 1.05em;
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.15s, border-bottom-width 0.15s;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .btn:hover { transform: translateY(-3px); }
+
+  .btn:active {
+    transform: translateY(3px);
+    border-bottom-width: 2px;
+  }
+
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -25px;
+    z-index: 999;
+    pointer-events: none;
+    border-radius: 3px;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  .heart {
+    position: fixed;
+    font-size: 22px;
+    z-index: 998;
+    pointer-events: none;
+    animation: heartUp 3.5s ease-out forwards;
+  }
+
+  @keyframes heartUp {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    20% { transform: translateY(-40px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(0.6); opacity: 0; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 12px; padding-top: 80px; padding-bottom: 20px; }
+
+    .sun { width: 60px; height: 60px; top: 18px; right: 18px; }
+
+    .pigeon { width: 150px; height: 150px; }
+
+    .envelope {
+      width: 80px;
+      height: 55px;
+      bottom: -14px;
+      border-width: 3px;
+    }
+
+    .envelope::before {
+      border-left: 37px solid transparent;
+      border-right: 37px solid transparent;
+      border-top: 24px solid #ffd670;
+    }
+
+    .envelope-heart { font-size: 20px; margin-top: 4px; }
+
+    .card {
+      padding: 65px 18px 28px;
+      border-radius: 26px;
+      border-width: 4px;
+      margin-top: 95px;
+    }
+
+    .balloons { top: -52px; gap: 14px; }
+    .balloon { width: 38px; height: 48px; }
+    .balloon-string { height: 26px; bottom: -30px; }
+
+    .cake { font-size: 52px; }
+    .candle { width: 6px; height: 22px; }
+    .flame { width: 7px; height: 10px; top: -9px; }
+
+    h1 { font-size: 1.45em; margin: 10px 0 6px; }
+    .subtitle { font-size: 0.9em; }
+
+    .age {
+      font-size: 2.2em;
+      width: 78px;
+      height: 78px;
+      line-height: 70px;
+      border-width: 3px;
+    }
+
+    .message { font-size: 0.9em; padding: 15px 14px; line-height: 1.7; }
+    .btn { font-size: 0.98em; padding: 13px 26px; }
+  }
+
+  @media (max-width: 360px) {
+    .balloons { gap: 10px; }
+    .balloon { width: 32px; height: 42px; }
+    h1 { font-size: 1.25em; }
+    .message { font-size: 0.85em; }
+    .pigeon { width: 120px; height: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sun"></div>
+
+<div class="clouds">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+  <div class="cloud cloud4"></div>
+  <div class="cloud cloud5"></div>
+</div>
+
+<div class="pigeon-scene" id="pigeonScene">
+  <div class="pigeon" id="pigeon">
+    <svg class="pigeon-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g class="pigeon-tail">
+        <path d="M 55 105 Q 20 120 10 150 Q 25 140 40 135 Q 35 155 45 165 Q 55 145 65 130 Z"
+              fill="#e8eef5" stroke="#b8c6d6" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M 50 110 Q 25 125 18 148" fill="none" stroke="#c9d4e0" stroke-width="1.5"/>
+      </g>
+
+      <ellipse cx="90" cy="105" rx="48" ry="32" fill="#f5f8fc" stroke="#b8c6d6" stroke-width="2"/>
+
+      <path d="M 70 95 Q 90 88 110 92 Q 105 105 90 108 Q 75 108 70 95 Z" fill="#e8eef5"/>
+
+      <g class="wing-back">
+        <path d="M 70 90 Q 40 70 20 90 Q 35 105 55 110 Q 65 105 70 90 Z"
+              fill="#d6e0ec" stroke="#b8c6d6" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M 60 95 Q 45 85 30 92" fill="none" stroke="#c0cddb" stroke-width="1.5"/>
+        <path d="M 58 100 Q 42 95 28 102" fill="none" stroke="#c0cddb" stroke-width="1.5"/>
+      </g>
+
+      <path d="M 130 95 Q 150 85 165 90 Q 160 100 145 105 Z" fill="#e8eef5"/>
+
+      <g class="pigeon-head">
+        <circle cx="125" cy="78" r="24" fill="#f5f8fc" stroke="#b8c6d6" stroke-width="2"/>
+
+        <circle cx="135" cy="72" r="4" fill="#2b2b2b"/>
+        <circle cx="136" cy="71" r="1.3" fill="#fff"/>
+
+        <path d="M 148 76 L 165 80 L 148 84 Z" fill="#ffb703" stroke="#e08e00" stroke-width="1.5" stroke-linejoin="round"/>
+
+        <circle cx="122" cy="86" r="3" fill="#ffb3c6" opacity="0.6"/>
+
+        <path d="M 118 60 Q 122 50 128 56 Q 126 62 122 62 Z" fill="#d6e0ec" stroke="#b8c6d6" stroke-width="1"/>
+        <path d="M 128 58 Q 134 48 140 54 Q 136 60 130 60 Z" fill="#d6e0ec" stroke="#b8c6d6" stroke-width="1"/>
+      </g>
+
+      <g class="wing-front">
+        <path d="M 75 92 Q 45 60 15 75 Q 35 100 60 112 Q 72 108 75 92 Z"
+              fill="#ffffff" stroke="#b8c6d6" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M 65 88 Q 50 72 28 76" fill="none" stroke="#d0dbe7" stroke-width="1.5"/>
+        <path d="M 62 95 Q 45 82 25 86" fill="none" stroke="#d0dbe7" stroke-width="1.5"/>
+        <path d="M 60 102 Q 42 92 22 96" fill="none" stroke="#d0dbe7" stroke-width="1.5"/>
+      </g>
+
+      <path d="M 88 135 L 82 150 M 95 137 L 92 152 M 102 135 L 105 150"
+            stroke="#ffb703" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <div class="envelope">
+      <div class="envelope-heart">💖</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="balloons">
+    <div class="balloon">
+      <div class="balloon-body"></div>
+      <div class="balloon-tie"></div>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="balloon">
+      <div class="balloon-body"></div>
+      <div class="balloon-tie"></div>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="balloon">
+      <div class="balloon-body"></div>
+      <div class="balloon-tie"></div>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="balloon">
+      <div class="balloon-body"></div>
+      <div class="balloon-tie"></div>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="balloon">
+      <div class="balloon-body"></div>
+      <div class="balloon-tie"></div>
+      <div class="balloon-string"></div>
+    </div>
+  </div>
+
+  <div class="cake-wrap">
+    <div class="candles" id="candles"></div>
+    <div class="cake">🎂</div>
+  </div>
+
+  <h1>С Днём Рождения,<br><span class="name">Ангелина!</span> 💖</h1>
+
+  <p class="subtitle">✨ Сегодня твой особенный день ✨</p>
+
+  <div class="age">11</div>
+
+  <p class="message">
+    Дорогая Ангелина! 🎈<br>
+    Поздравляем тебя с 11-летием!<br>
+    Желаем тебе море радости, счастья,<br>
+    крепкого здоровья и исполнения<br>
+    всех самых заветных желаний!<br>
+    Пусть каждый день будет ярким и весёлым! 🌟
+  </p>
+
+  <button class="btn" id="celebrateBtn">🎉 Нажми меня! 🎉</button>
+</div>
+
+<script>
+  const candlesContainer = document.getElementById('candles');
+  for (let i = 0; i < 11; i++) {
+    const candle = document.createElement('div');
+    candle.classList.add('candle');
+    const flame = document.createElement('div');
+    flame.classList.add('flame');
+    candle.appendChild(flame);
+    candlesContainer.appendChild(candle);
+  }
+
+  function createConfetti() {
+    const colors = ['#ff8fa3', '#ffd670', '#8ecae6', '#b8e0a0', '#d9b3ff', '#ffb703', '#fb8500'];
+    for (let i = 0; i < 80; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.classList.add('confetti');
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.width = (Math.random() * 7 + 6) + 'px';
+        c.style.height = (Math.random() * 7 + 6) + 'px';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+        c.style.animation = 'confettiFall ' + (Math.random() * 2 + 2.5) + 's linear forwards';
+        c.style.animationDelay = Math.random() * 0.4 + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }, i * 35);
+    }
+  }
+
+  function createHearts() {
+    const emojis = ['💖', '💕', '❤️', '🧡', '💛', '💚', '💙', '💜', '🌸', '⭐'];
+    for (let i = 0; i < 18; i++) {
+      setTimeout(() => {
+        const h = document.createElement('div');
+        h.classList.add('heart');
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.bottom = '-40px';
+        h.style.fontSize = (Math.random() * 12 + 18) + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+      }, i * 140);
+    }
+  }
+
+  document.getElementById('celebrateBtn').addEventListener('click', function () {
+    createConfetti();
+    createHearts();
+    if (navigator.vibrate) navigator.vibrate([80, 40, 80, 40, 160]);
+    const btn = this;
+    const original = btn.textContent;
+    btn.textContent = '🎊 Ура! 🎊';
+    setTimeout(() => { btn.textContent = original; }, 1800);
+  });
+
+  // === УДАЛЕНИЕ ГОЛУБЯ В МОМЕНТ, КОГДА ОТКРЫТКА НАЧИНАЕТ РАСКРЫВАТЬСЯ ===
+  // Анимация cardReveal стартует на 3.5s. Удаляем голубя ровно в этот же момент.
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const pigeonScene = document.getElementById('pigeonScene');
+      if (pigeonScene) {
+        pigeonScene.remove(); // голубь полностью удаляется из DOM синхронно с началом раскрытия открытки
+      }
+    }, 3500); // 3.5 сек — ровно тот момент, когда открытка начинает появляться
+  });
+
+  setTimeout(createConfetti, 4700);
+  window.addEventListener('load', () => setTimeout(createHearts, 5000));
+</script>
+
+</body>
+</html>
